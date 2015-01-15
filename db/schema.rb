@@ -38,4 +38,12 @@ ActiveRecord::Schema.define(version: 20150115224259) do
     t.datetime "updated_at"
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.boolean  "upvote"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
 end
