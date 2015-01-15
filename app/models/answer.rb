@@ -1,7 +1,9 @@
 class Answer < ActiveRecord::Base
   validates_presence_of :body
-  belongs_to :user, :question
-  has_many :comments, :votes
+  belongs_to :user
+  belongs_to :question
+  has_many :comments
+  has_many :votes
 
   def upvotes
     votes.select{|v| v.upvote == true }
