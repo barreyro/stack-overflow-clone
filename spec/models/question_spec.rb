@@ -19,7 +19,10 @@ describe Question do
   end
 
   it "is invalid without a user_id"
+
   it "is valid with duplicate user_id"
   it "returns a title as a string"
+  it "should belong to a user"
+
 
 end
