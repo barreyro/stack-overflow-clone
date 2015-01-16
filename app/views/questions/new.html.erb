@@ -1,1 +1,11 @@
-new.html.erb
+<div class="question_new">
+  <%= form_for @question do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+    <%= f.label :body %>
+    <%= f.text_field :body %>
+
+    <%= f.submit %>
+  <% end %>
+</div>
