@@ -1,5 +1,7 @@
 <div class="question_index">
+  <ul>
   <% @questions.each do |question| %>
-    <%= question.id %>
+    <li><%= question.title %></li>
   <% end %>
+  </ul>
 </div>
