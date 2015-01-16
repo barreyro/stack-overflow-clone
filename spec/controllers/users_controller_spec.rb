@@ -56,5 +56,11 @@ describe UsersController do
       post :create, user: attributes_for(:invalid_user)
       expect(response).to redirect_to new_user_path
     end
+
+    it "saves to the database" do
+      expect {
+        post :create, user: attributes_for(:end_user)
+      }.to change(User, :count).by(1)
+    end
   end
 end
