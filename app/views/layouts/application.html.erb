@@ -10,9 +10,10 @@
 </head>
 <body>
 <header>
-  <%= render partial: "/layouts/navigation" %>
-  <%= render partial: "/layouts/splashplanation" %>
+  <%= render partial: "/layouts/navigation", locals: { user: @user } %>
 </header>
-<%= yield %>
+<div id="main-content">
+  <%= yield %>
+</div>
 </body>
 </html>
