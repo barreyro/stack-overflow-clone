@@ -14,5 +14,16 @@ describe QuestionsController do
       expect(assigns(:question)).to be_a_new Question
     end
   end
+  context "POST #create" do
+    it "creates a question if params are valid" do
+      expect{
+        post :create, question: {
+          title: "Can you name all the CareBears?",
+          body: "I only know of Sunshine Bear."
+        }
+      }.to change { Question.count }.by(1)
+    end
+
+  end
 end
 
