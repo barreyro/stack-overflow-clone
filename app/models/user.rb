@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
   def self.session_user session_id
     User.find(session_id)
   end
+
+  def current_user?
+    self.id.eql? User.session_user.id
+  end
 end
