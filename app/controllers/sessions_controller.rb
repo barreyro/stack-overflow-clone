@@ -4,9 +4,9 @@ class SessionsController < ApplicationController
   end
 
   def create_session
-    user = Session.login_by_username_or_email(params[:user_input]) || false
+    user = Session.login_by_username_or_email(params[:user_input])
 
-    if user.authenticate(params[:password])
+    if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:success] = "Welcome back, #{user.username}!"
       redirect_to root_path

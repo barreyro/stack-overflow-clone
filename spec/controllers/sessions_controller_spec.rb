@@ -15,6 +15,12 @@ describe SessionsController do
   describe "GET #create_session" do
     it "sets the correct session user after authenticating" do
     end
+
+    it "redirects to root_path when given incorrect information" do
+      bad_user = User.new(username: "", password: "", email: "")
+      get :create_session, username: bad_user
+      expect(response).to redirect_to login_path
+    end
   end
 
   describe "GET #logout" do
