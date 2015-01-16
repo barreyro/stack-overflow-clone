@@ -64,4 +64,13 @@ describe UsersController do
       }.to change(User, :count).by(1)
     end
   end
+
+  describe "POST #edit" do
+    before :each do
+      @user = create(:user)
+    end
+    it "assigns the user to @user" do
+
+    end
+  end
 end
