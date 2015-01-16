@@ -16,4 +16,12 @@ class User < ActiveRecord::Base
   def current_user?
     self.id.eql? User.session_user.id
   end
+
+  def questions_asked
+    self.questions.count
+  end
+
+  def has_questions?
+    true if !self.questions.empty?
+  end
 end

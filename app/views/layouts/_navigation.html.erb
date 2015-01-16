@@ -1,0 +1,15 @@
+<nav id="site-navigation">
+  <div id="left-nav">
+    <a href="/" class="nav-link">DBC Overflow / </a>
+    <a href="/questions" class="nav-link">Ask a Question / </a>
+  </div>
+  <div id="right-nav">
+    <% if !session[:user_id] %>
+      <a href="/login" class="nav-link">Login / </a>
+      <a href="/signup" class="nav-link">Signup / </a>
+    <% else %>
+      <a href="/users/<%= User.session_user(session[:user_id]).id %>" class="nav-link"><%= User.session_user(session[:user_id]).username %> /</a>
+      <a href="/logout" class="nav-link">Logout / </a>
+    <% end %>
+  </di>
+</nav>
