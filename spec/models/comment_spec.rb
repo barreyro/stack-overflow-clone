@@ -41,4 +41,21 @@ describe Comment do
     expect(child_comment.article == parent_comment).to be(true)
   end
 
+  it "return a question when made on a question" do
+    comment = create(:comment)
+    expect(comment.question).to be_a Question
+  end
+
+  it "return an answer when made on an answer" do
+    answer = create(:answer)
+    comment = Comment.new(body: Faker::Lorem.word)
+    answer.comments << comment
+    comment.save
+    expect(comment.answer).to be_a Answer
+  end
+
+  it "return a comment when made on a comment" do
+
+  end
+
 end
