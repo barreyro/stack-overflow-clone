@@ -35,7 +35,8 @@ describe UsersController do
     end
 
     it "renders :edit template" do
-      get :edit
+      user = create(:user)
+      get :edit, id: user
       expect(response).to render_template :edit
     end
   end
