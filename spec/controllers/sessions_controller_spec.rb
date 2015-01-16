@@ -21,6 +21,13 @@ describe SessionsController do
       get :create_session, username: bad_user
       expect(response).to redirect_to login_path
     end
+
+    # describe "sets flash parameters" do
+    #   it "on success to welcome specific user" do
+    #     get :create_session, { user_input: @user.username }
+    #     expect(flash[:success]).to eq("Welcome back, #{@user.username}!")
+    #   end
+    # end
   end
 
   describe "GET #logout" do
