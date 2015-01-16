@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe Question do
+  let(:test_user) {FactoryGirl.create :user}
   it "is valid with a title and body" do
     question = Question.new(
       title: 'What does bear meat taste like?',
@@ -25,9 +26,11 @@ describe Question do
     expect(question.title).to eq(question.title.to_s)
   end
 
-  it "is invalid without a user_id"
-  it "is valid with duplicate user_id"
-  it "should belong to a user"
-
-
+  it "has a user_id" do
+    question = Question.new(
+      title: "What does bear meat taste like?",
+      body: 'Black or care bears only.',
+      user_id: test_user.id)
+    expect(question.user_id).to be_truthy
+  end
 end
