@@ -13,6 +13,33 @@ describe UsersController do
     end
   end
 
+  describe "GET #show" do
+    it "assigns the user to @user" do
+      user = create(:user)
+      get :show, id: user
+      expect(assigns(:user)).to eq user
+    end
+
+    it "renders the show template" do
+      user = create(:user)
+      get :show, id: user
+      expect(response).to render_template :show
+    end
+  end
+
+  describe "GET #edit" do
+    it "assigns the user to @user" do
+      user = create(:user)
+      get :edit, id: user
+      expect(assigns(:user)).to eq user
+    end
+
+    it "renders :edit template" do
+      get :edit
+      expect(response).to render_template :edit
+    end
+  end
+
   describe "POST #create" do
     it "redirects to root_path if user created" do
       post :create, user: attributes_for(:end_user)
