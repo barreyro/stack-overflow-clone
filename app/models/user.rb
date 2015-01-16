@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :answers
   has_many :questions
   has_many :votes
+  has_many :comments
 
   def self.session_user session_id
     User.find(session_id)
