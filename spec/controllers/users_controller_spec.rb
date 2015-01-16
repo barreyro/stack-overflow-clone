@@ -65,12 +65,40 @@ describe UsersController do
     end
   end
 
-  describe "POST #edit" do
+  describe "PUT #update" do
     before :each do
       @user = create(:user)
     end
-    it "assigns the user to @user" do
 
+    describe "when passed valid attributes" do
+      it "updates the user's attributes" do
+        patch :update, id: @user,
+          user: attributes_for(:user, username: "jdawg55")
+          @user.reload
+          expect(@user.username).to eq('jdawg55')
+      end
+      it "redirects to updated user" do
+        patch :update, id: @user, user: attributes_for(:user, username: "jdawg55")
+        @user.reload
+        expect(response).to redirect_to @user
+      end
+    end
+
+    describe "when passed invalid attributes" do
+      it "does not update the user's attributes" do
+        username = @user.username
+        patch :update, id: @user,
+          user: attributes_for(:user, username: "")
+          @user.reload
+          expect(@user.username).to_not eq("''")
+          expect(@user.username).to eq(username)
+      end
+
+      it "redirects to the edit_user_path" do
+        patch :update, id: @user,
+          user: attributes_for(:invalid_user)
+          expect(response).to redirect_to edit_user_path
+      end
     end
   end
 end
