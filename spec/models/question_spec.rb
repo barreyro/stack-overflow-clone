@@ -18,10 +18,15 @@ describe Question do
     expect(Question.all).not_to include question
   end
 
-  it "is invalid without a user_id"
+  it "returns a title as a string" do
+    question = Question.new(
+      title: 'What does bear meat taste like?',
+      body: 'Black or care bears only.')
+    expect(question.title).to eq(question.title.to_s)
+  end
 
+  it "is invalid without a user_id"
   it "is valid with duplicate user_id"
-  it "returns a title as a string"
   it "should belong to a user"
 
 
