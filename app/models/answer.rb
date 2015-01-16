@@ -10,6 +10,6 @@ class Answer < ActiveRecord::Base
   end
 
   def downvotes
-    votes.select{|v| v.downvote == true }
+    votes.select{|v| v.upvote == false }
   end
 end

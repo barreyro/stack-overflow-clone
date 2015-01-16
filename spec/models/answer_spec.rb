@@ -33,8 +33,16 @@ describe Answer do
     expect(answer.upvotes.all?{|v| v.upvote == true }).to be true
   end
 
-  it "can return a collection of its downvotes"
+  it "can return a collection of its downvotes" do
+    down = create(:downvote)
+    answer.votes << down
+    expect(answer.downvotes.all?{|v| v.upvote == false }).to be true
+  end
 
-  it "can return a collection of its comments"
+  it "can return a collection of its comments" do
+    comment = Comment.create(body:"This is a great answer")
+    answer.comments << comment
+    expect(answer.comments).to include comment
+  end
 
 end
