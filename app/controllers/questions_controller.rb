@@ -22,6 +22,16 @@ class QuestionsController  < ApplicationController
     @question = Question.find(params[:id])
   end
 
+  def update
+    @question = Question.find(params[:id])
+
+    if @question.update_attributes(question_params)
+      redirect_to questions_path
+    else
+      render :show
+    end
+  end
+
   private
 
   def question_params
