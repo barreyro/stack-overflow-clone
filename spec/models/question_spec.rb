@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe Question do
+  let(:test_user) {FactoryGirl.create :user}
   it "is valid with a title and body" do
     question = Question.new(
       title: 'What does bear meat taste like?',
