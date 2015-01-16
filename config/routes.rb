@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   resources :users, :questions
 
+  resources :questions do
+    resources :answers
+  end
+
   get "login", to: "sessions#login"
   post "login", to: "sessions#create_session"
   get "logout", to: "sessions#logout"
