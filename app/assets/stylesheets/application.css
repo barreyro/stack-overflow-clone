@@ -13,3 +13,66 @@
  *= require_tree .
  *= require_self
  */
+a { text-decoration: none; }
+p { margin: 2px; font: 1em "Source Sans Pro", sans-serif; letter-spacing: .7px; }
+#site-navigation {
+  width: 100%;
+  height: 45px;
+  background-color: rgb(43,87,151);
+
+  display: flex;
+  flex-direction: row;
+}
+#left-nav { padding: 10px 0 0 10px; text-align: left; flex: 1; }
+#right-nav { padding: 10px 10px 0 0; text-align: right; flex: 1; }
+.nav-link {
+  font: 1em "Source Sans Pro", sans-serif;
+  letter-spacing: .7px;
+  justify-content: center;
+  text-transform: uppercase;
+  color: rgb(239,244,255);
+}
+
+#splashplanation {
+  margin: 10px auto;
+  width: 80%;
+  height: 250px;
+  border-radius: 20px;
+  background-color: rgb(43,87,151);
+  box-shadow: -2px 2px 5px rgba(0,0,0,.4);
+}
+#splash-title {
+  margin: 10px;
+  padding: 15px;
+  font: 600 3em "Source Sans Pro", sans-serif;
+  letter-spacing: 3px;
+  color: rgb(239,244,255);
+  text-transform: uppercase;
+  text-align: center;
+  border-bottom: 5px double rgb(239,244,255);
+}
+#call-to-action {
+  margin: 0 auto;
+  width: 80%;
+  text-align: center;
+}
+#splash-options {
+  display: flex;
+  flex-direction: column;
+}
+.do-this {
+  text-transform: uppercase;
+  color: rgb(239,244,255);
+  letter-spacing: 1px;
+  font: 1em "Source Sans Pro", sans-serif;
+}
+#splashlog form {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin: 20px auto;
+}
+#splashlog input[type="text"], input[type="password"] {
+  padding: 5px;
+  border: 2px double solid;
+}
