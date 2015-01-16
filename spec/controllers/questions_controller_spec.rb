@@ -31,6 +31,12 @@ describe QuestionsController do
       get :edit, id: question.id
       expect(assigns(:question)).to eq question
     end
+
+    it "renders the :edit template" do
+      question = create(:question)
+      get :edit, id: question.id
+      expect(response).to render_template :edit
+    end
   end
 end
 
