@@ -23,7 +23,14 @@ describe QuestionsController do
         }
       }.to change { Question.count }.by(1)
     end
+  end
 
+  context "GET #edit" do
+    it "assigns the request title to appropriate question" do
+      question = create(:question)
+      get :edit, id: question.id
+      expect(assigns(:question)).to eq question
+    end
   end
 end
 
