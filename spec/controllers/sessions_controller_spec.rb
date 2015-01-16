@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe SessionsController do
   before :each do
-    @user = build(:user)
+    @user = create(:user)
   end
 
   describe "GET #login" do
@@ -25,7 +25,6 @@ describe SessionsController do
 
   describe "GET #logout" do
     before :each do
-      @user = create(:user)
       session[:user_id] = @user.id
     end
 
