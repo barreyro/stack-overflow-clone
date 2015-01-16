@@ -51,6 +51,9 @@ p { margin: 2px; font: 1em "Source Sans Pro", sans-serif; letter-spacing: .7px; 
   text-align: center;
   border-bottom: 5px double rgb(239,244,255);
 }
+#main-content {
+  margin: 1% 4% ;
+}
 #call-to-action {
   margin: 0 auto;
   width: 80%;

@@ -3,9 +3,9 @@
   <div id="call-to-action">
     <div id="splash-options">
       <% if session[:user_id] %>
-        <p>Welcome, <a href="/users/<%= User.session_user(session[:user_id]).id %>" class="nav-link"><%= User.session_user(session[:user_id]).username %></a>!</p>
+        <p>Welcome, <a href="/users/<%= user.id %>" class="nav-link"><%= user.username %></a>!</p>
         <p>We missed you so, so much.</p>
-        <p>You've currently asked <%= User.session_user(session[:user_id]).questions_asked %> questions</p>
+        <p>You've currently asked <%= user.questions_asked %> questions.
       <% else %>
         <%= render partial: "layouts/splashlog" %>
       <% end %>
