@@ -6,6 +6,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_path
     else
+      flash[:failure] = "Login Failed."
       redirect_to new_user_path
     end
   end
@@ -21,8 +22,10 @@ class UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     if user.update(user_params)
+      flash[:success] = "Profile Updated."
       redirect_to user_path(user.id)
     else
+      flash[:failure] = "Update Unsuccessful."
       redirect_to edit_user_path(user.id)
     end
   end

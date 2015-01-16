@@ -100,5 +100,17 @@ describe UsersController do
           expect(response).to redirect_to edit_user_path
       end
     end
+
+    describe "sets flash parameters" do
+      it "on success to 'Profile Update.'" do
+        patch :update, id: @user, user: attributes_for(:user, username: "jdawg55")
+        expect(flash[:success]).to eq("Profile Updated.")
+      end
+      it "on failure to 'Update Unsuccessful.'" do
+        patch :update, id: @user,
+        user: attributes_for(:user, username: "")
+        expect(flash[:failure]).to eq("Update Unsuccessful.")
+      end
+    end
   end
 end
