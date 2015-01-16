@@ -1,0 +1,6 @@
+<%= form_tag(controller: "sessions", action: "login", method: "get") %>
+<%= label_tag "user_input", "Username or Email:", class: "login-username-tag" %>
+<%= text_field_tag "user_input" %>
+<%= label_tag "password", "Password:", class: "login-password-tag" %>
+<%= password_field_tag "password" %>
+<%= submit_tag "Login" %>
