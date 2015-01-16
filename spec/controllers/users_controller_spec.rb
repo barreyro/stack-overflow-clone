@@ -54,7 +54,7 @@ describe UsersController do
 
     it "redirects back to signup form if signup fails" do
       post :create, user: attributes_for(:invalid_user)
-      expect(response).to redirect_to root_path
+      expect(response).to redirect_to new_user_path
     end
   end
 end
