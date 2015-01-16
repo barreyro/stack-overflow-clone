@@ -1,7 +1,11 @@
+require 'rails_helper'
+
 describe Comment do
 
   it "is invalid without a body" do
-    note = build(:comment)
+    question = create(:question)
+    note = Comment.new( )
+    question.comments << note
     note.save
     expect(Comment.all).not_to include note
   end
@@ -26,6 +30,15 @@ describe Comment do
     answer.comments << build(:comment)
     answer.save
     expect(answer.comments.first).to be_a Comment
+  end
+
+  it "can be made on a comment" do
+    parent_comment = build(:comment)
+    child_comment = Comment.new(body: "something")
+    parent_comment.comments << child_comment
+    parent_comment.save
+    expect(parent_comment.comments.first == child_comment).to be(true)
+    expect(child_comment.article == parent_comment).to be(true)
   end
 
 end
