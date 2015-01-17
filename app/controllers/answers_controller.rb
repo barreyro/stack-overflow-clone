@@ -17,7 +17,7 @@ class AnswersController < ApplicationController
   def create
     answer = @question.answers.new(answer_params)
     if answer.save
-      redirect_to root_path
+      redirect_to question_answers(params[:question_id])
     else
       flash[:failure] = "Answer failed to save."
       redirect_to new_question_answer_path(@question)
