@@ -41,28 +41,13 @@ describe Comment do
     expect(child_comment.article == parent_comment).to be(true)
   end
 
-  it "return a question when made on a question" do
-    comment = create(:comment)
-    expect(comment.question).to be_a Question
-  end
-
-  it "return an answer when made on an answer" do
-    answer = create(:answer)
-    comment = Comment.new(body: Faker::Lorem.word)
-    answer.comments << comment
-    comment.save
-    expect(comment.answer).to be_a Answer
-  end
-
-  it "return a comment when made on a comment" do
-    parent_comment = create(:comment)
-    byebug
-    comment = Comment.new(body:Faker::Lorem.word)
-    parent_comment.comments << comment
-    parent_comment.save
-    expect(comment.comment).to be_a Comment
-    expect(comment.question).to be nil
-    expect(parent_comment.comments.first).to eq comment
+  it "returns parent article" do
+    [:question, :answer, :comment].each do |article|
+      parent = create(article)
+      comment = parent.comments.build( attributes_for(:comment) )
+      comment.save
+      expect(comment.get_parent).to eq parent
+    end
   end
 
 end

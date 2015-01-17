@@ -4,6 +4,13 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   has_many :comments, as: :article
 
+
+  def get_parent
+    question || answer || comment
+  end
+
+  private
+
   def question
     return article if article.class == Question
     nil
@@ -15,7 +22,7 @@ class Comment < ActiveRecord::Base
   end
 
   def comment
-    return comment if article.class == Comment
+    return article if article.class == Comment
     nil
   end
 end
