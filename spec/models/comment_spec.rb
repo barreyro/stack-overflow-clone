@@ -55,7 +55,14 @@ describe Comment do
   end
 
   it "return a comment when made on a comment" do
-
+    parent_comment = create(:comment)
+    byebug
+    comment = Comment.new(body:Faker::Lorem.word)
+    parent_comment.comments << comment
+    parent_comment.save
+    expect(comment.comment).to be_a Comment
+    expect(comment.question).to be nil
+    expect(parent_comment.comments.first).to eq comment
   end
 
 end
