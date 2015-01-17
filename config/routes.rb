@@ -6,20 +6,20 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :users do
-    resources :comments, only: [:index, :new, :create]
+    resources :comments, only: [:index, :new, :create, :show]
   end
 
   resources :questions do
     resources :answers
-    resources :comments, only: [:index, :new, :create]
+    resources :comments, only: [:index, :new, :create, :show]
   end
 
   resources :answers do
-    resources :comments, only: [:index, :new, :create]
+    resources :comments, only: [:index, :new, :create, :show]
   end
 
   resources :comments do
-    resources :comments, only: [:index, :new, :create]
+    resources :comments, only: [:index, :new, :create, :show]
   end
 
   get "login", to: "sessions#login"
