@@ -91,6 +91,10 @@ li {
   width: 70%;
   margin: auto;
 }
+.panel .panel {
+  width: 95%;
+  margin-left: 5%;
+}
 .user-link {
   color: rgb(43,87,151);
 }
