@@ -1,14 +1,14 @@
 class CommentsController < ApplicationController
   #parent_article scoped
   def index
-    @article = find_parent
+    @article = locals[:article]
     @comments = @article.comments
     render partial: "index"
   end
 
   def new
-    @article = find_parent
-    @comment = Comment.new
+    @article = find_parent_with_type
+    @comment = @article.comments << Comment.new
   end
 
   def create
@@ -41,18 +41,27 @@ class CommentsController < ApplicationController
 
   private
 
-  def find_parent
+  def find_parent_with_type
     params.each do |key, value|
-      klass = key.sub( /_id$/, "" )
+      #hacky temporary fix
+      next unless !!( /(question)|(comment)|(answer|id)/ =~ key )
+
+      klass = key.sub(/_id$/, "")
       if klass.classify.constantize
-        return klass.classify.constantize.find(value[:id])
+        return klass.classify.constantize.find(value)
       end
     end
     nil
   end
 
   def parent_show_path(article_obj)
-    "/#{article_obj.class.downcase}s/#{article_obj.id}"
+    if article_obj.class == Question
+      "/questions/#{article_obj.id}"
+    elsif article_obj.class == Answer
+      "/questions/#{article_obj.question.id}/answers/#{article_obj.id}"
+    else
+      root_path
+    end
   end
 
 end
