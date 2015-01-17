@@ -42,7 +42,8 @@ class CommentsController < ApplicationController
   private
 
   def find_parent
-    params.each do |klass, value|
+    params.each do |key, value|
+      klass = key.sub( /_id$/, "" )
       if klass.classify.constantize
         return klass.classify.constantize.find(value[:id])
       end
