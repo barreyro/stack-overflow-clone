@@ -15,6 +15,7 @@
     </li>
   </ul>
 
-  <%= render 'comments/index', @answer %>
+  <% @article = @answer %>
+  <%= render 'comments/index', locals: {article: @article} %>
 
 </div>

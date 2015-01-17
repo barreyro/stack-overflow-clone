@@ -1,6 +1,7 @@
 <div class="display-comments">
-  <% @comments.each do |comment| %>
-  <ul>
-    <%= erb "show", :comment %>
-  </ul>
+  <% @article.comments.each do |comment| %>
+  <div class="panel">
+    <%= render 'comments/show', locals: {comment: comment} %>
+  </div>
+  <% end %>
 </div>
