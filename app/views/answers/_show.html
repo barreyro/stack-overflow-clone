@@ -1,0 +1,14 @@
+<div class="panel">
+  <ul>
+    <li>
+      Answered by
+      <a href="/users/<%= @answer.user.id %>">
+        <%= @answer.user.username %>
+      </a>
+      on <%= @answer.created_at.strftime("%b %d, %Y") %>):
+    </li>
+    <li>
+      <%= @answer.body %>
+    </li>
+  </ul>
+</div>
