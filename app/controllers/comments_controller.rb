@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  de index
+  def index
   end
 
   def show
