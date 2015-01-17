@@ -1,14 +1,20 @@
 <div class="panel">
+
   <ul>
     <li>
-      Answered by
-      <a href="/users/<%= @answer.user.id %>">
-        <%= @answer.user.username %>
-      </a>
-      on <%= @answer.created_at.strftime("%b %d, %Y") %>):
+      <strong>
+        Answered by
+        <a class="user-link" href="/users/<%= @answer.user.id %>">
+          <%= @answer.user.username %>
+        </a>
+        on <%= @answer.created_at.strftime("%b %d, %Y") %>):
+      </strong>
     </li>
     <li>
       <%= @answer.body %>
     </li>
   </ul>
+
+  <%= render 'comments/index', @answer %>
+
 </div>

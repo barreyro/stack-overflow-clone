@@ -79,3 +79,18 @@ p { margin: 2px; font: 1em "Source Sans Pro", sans-serif; letter-spacing: .7px; 
   padding: 5px;
   border: 2px double solid;
 }
+li {
+  list-style-type: none;
+  margin-left: -1.5rem;
+  margin-bottom: 0.5rem;
+}
+.panel {
+  border: 1px solid #DDDDDD;
+  background-color: rgba(43,87,151, 0.1);
+  border-color: rgba(43,87,151, 0.2);
+  width: 70%;
+  margin: auto;
+}
+.user-link {
+  color: rgb(43,87,151);
+}
