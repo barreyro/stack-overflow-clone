@@ -27,8 +27,7 @@ describe CommentsController do
 
   describe "Post #create" do
     context "with valid attributes" do
-      it "saves the new comment in the database"
-      it 'redirects to comment#show'
+      it 'redirects to parent#show'
     end
 
     context "with invalid attributes" do
