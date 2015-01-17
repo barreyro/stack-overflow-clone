@@ -41,4 +41,13 @@ describe Comment do
     expect(child_comment.article == parent_comment).to be(true)
   end
 
+  it "returns parent article" do
+    [:question, :answer, :comment].each do |article|
+      parent = create(article)
+      comment = parent.comments.build( attributes_for(:comment) )
+      comment.save
+      expect(comment.get_parent).to eq parent
+    end
+  end
+
 end
