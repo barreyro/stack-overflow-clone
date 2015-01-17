@@ -5,10 +5,21 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
-  resources :users, :questions
+  resources :users do
+    resources :comments, only: [:index, :new, :create]
+  end
 
   resources :questions do
     resources :answers
+    resources :comments, only: [:index, :new, :create]
+  end
+
+  resources :answers do
+    resources :comments, only: [:index, :new, :create]
+  end
+
+  resources :comments do
+    resources :comments, only: [:index, :new, :create]
   end
 
   get "login", to: "sessions#login"
