@@ -1,7 +1,8 @@
 require 'rails_helper'
 describe QuestionsController do
   let(:user) { FactoryGirl.create :user }
-  let(:question) { FactoryGirl.create :question }
+  let(:quesiton) { FactoryGirl.create :question }
+
   context "GET #index" do
     it "assigns a questions variable to Question.all" do
       get :index
@@ -39,35 +40,6 @@ describe QuestionsController do
     end
   end
 
-  context "PUT #update" do
-    it "updates the question if valid params" do
-      question = create(:question)
-      expect{
-        put :update, id: question.id,
-        question: question_params(:question, title: "Who LUVS carebears?!")
-        question.reload
-        expect(question.title).to eq("Who LUVS carebears?!")
-      }
-    end
-    it "redirects to the updated page" do
-      question = create(:question, title: "Why is Kobe amazing?")
-      expect{
-        patch :update, id: @question, question: attributes_for(:question, title: "Why is Kobe the best?")
-        @question.reload
-        expect(response).to redirect_to @question
-      }
-    end
-    it "does not update the question if invalid params" do
-      question = create(:question)
-      expect{
-        put :update, id: question.id,
-        question: question_params(:question, title: "")
-        question.reload
-        expect(question.title).to_not eq("")
-        expect(question.title).to eq(question)
-      }
-    end
 
-  end
 end
 
