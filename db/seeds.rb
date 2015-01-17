@@ -5,7 +5,7 @@
   end
 
   def gen_password(i)
-    i <= 1 ? '123' : Faker::Internet.password
+    i <= 1 ? '123456' : Faker::Internet.password
   end
 
   10.times do |i|
