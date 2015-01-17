@@ -3,4 +3,6 @@
     <%= @question.title %><br><Br>
     <%= @question.body %>
 
+     <%= button_to 'Edit Question', {action: "edit", id: @question.id}, method: :get %>
+     <%= button_to 'Delete Question', {action: "destroy", id: @question.id}, method: :delete %>
 </div>
