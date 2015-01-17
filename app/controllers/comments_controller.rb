@@ -25,15 +25,21 @@ class CommentsController < ApplicationController
 
   #self-scoped
   def show
-    @article = find_parent
-    @comments = @article.comments
     render partial: "show"
   end
 
   def destroy
+    comment = Comment.find(params[:id])
+    if matches_current_user?(comment.user)
+      @article = comment.get_parent_qa
+      comment.body = "[comment deleted by poster]"
+      comment.save
+    end
+    redirect_to parent_show_path(@article)
   end
 
   def edit
+    @comment = Comment.find(params[:id])
   end
 
   def update
