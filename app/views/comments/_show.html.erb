@@ -1,0 +1,7 @@
+<div class="comment-wrapper">
+  <p><%= locals[:comment][:body] %> </p>
+  <p> <span class="datetime"> <%= locals[:comment][:created_at] %> </span> </p>
+</div>
+
+<% @article = locals[:comment] %>
+<%= render 'comments/index', locals: {article: @article} %>

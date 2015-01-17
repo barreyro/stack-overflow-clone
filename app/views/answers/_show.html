@@ -1,0 +1,21 @@
+<div class="panel">
+
+  <ul>
+    <li>
+      <strong>
+        Answered by
+        <a class="user-link" href="/users/<%= @answer.user.id %>">
+          <%= @answer.user.username %>
+        </a>
+        on <%= @answer.created_at.strftime("%b %d, %Y") %>):
+      </strong>
+    </li>
+    <li>
+      <%= @answer.body %>
+    </li>
+  </ul>
+
+  <% @article = @answer %>
+  <%= render 'comments/index', locals: {article: @article} %>
+
+</div>

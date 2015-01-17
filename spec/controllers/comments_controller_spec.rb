@@ -3,9 +3,15 @@ require 'rails_helper'
 describe CommentsController do
 
   describe "GET #index" do
-    context "with session[:user_id]" do
-      it "delivers an array of all the users comments"
-      it "renders links to all the articles the user has commented on"
+    context "with params[:id] of parent article" do
+      it "delivers an array of all the users comments" do
+        user = create(:user)
+        answer = create(:answer, user: user)
+        comment = answer.comments.build( attributes_for(:comment, user_id: user.id) )
+        comment.save
+        get :index, {"answer" => {"id" => answer.id} }
+        expect(assigns(:comments)).to match_array [comment]
+      end
     end
   end
 
@@ -21,8 +27,7 @@ describe CommentsController do
 
   describe "Post #create" do
     context "with valid attributes" do
-      it "saves the new comment in the database"
-      it 'redirects to comment#show'
+      it 'redirects to parent#show'
     end
 
     context "with invalid attributes" do

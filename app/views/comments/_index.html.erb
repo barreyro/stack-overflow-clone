@@ -1,0 +1,7 @@
+<div class="display-comments">
+  <% @article.comments.each do |comment| %>
+  <div class="panel">
+    <%= render 'comments/show', locals: {comment: comment} %>
+  </div>
+  <% end %>
+</div>
