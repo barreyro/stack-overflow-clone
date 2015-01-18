@@ -9,9 +9,10 @@ class Comment < ActiveRecord::Base
     question || answer || comment
   end
 
-  def get_parent_qa
-    return article if article.class != Comment
-    article.get_parent_qa
+  def get_parent_question
+    return article if article.class == Question
+    return article.question if article.class == Answer
+    article.get_parent_question
   end
 
   private

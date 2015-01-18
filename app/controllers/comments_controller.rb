@@ -7,16 +7,17 @@ class CommentsController < ApplicationController
   end
 
   def new
-    @article = find_parent_with_type
-    @comment = @article.comments << Comment.new
+    @article = find_article
+    @comment = @article.comments.build
   end
 
   def create
-    @article = find_parent
-    @comment = @article.comments.build(params[:comment])
+    @article = find_article
+    @comment = @article.comments.build(comment_params )
+    @comment.user_id = session[:user_id]
     if @comment.save
-      flash[:notice] = "Commented!"
-      redirect_to parent_show_path
+      @question = @comment.get_parent_question
+      redirect_to question_path(@question)
     else
       flash[:notice] = "Comment creation error: #{@comment.errors}"
       render :new
@@ -47,27 +48,21 @@ class CommentsController < ApplicationController
 
   private
 
-  def find_parent_with_type
-    params.each do |key, value|
-      #hacky temporary fix
-      next unless !!( /(question)|(comment)|(answer|id)/ =~ key )
-
-      klass = key.sub(/_id$/, "")
-      if klass.classify.constantize
-        return klass.classify.constantize.find(value)
-      end
-    end
-    nil
+  def comment_params
+    params.require(:comment).permit(:body)
   end
 
-  def parent_show_path(article_obj)
-    if article_obj.class == Question
-      "/questions/#{article_obj.id}"
-    elsif article_obj.class == Answer
-      "/questions/#{article_obj.question.id}/answers/#{article_obj.id}"
-    else
-      root_path
+  def find_article
+    resource, id = request.path.split("/")[1,2]
+    @article = resource.singularize.classify.constantize.find(id)
+  end
+
+  def remove_id_anchor(key)
+    sanitized = key.clone
+    if sanitized.match(/_id$/)
+      sanitized = key.sub(/_id$/, "")
     end
+    sanitized
   end
 
 end
