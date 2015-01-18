@@ -9,18 +9,22 @@ class CommentsController < ApplicationController
   def new
     @article = find_article
     @comment = @article.comments.build
+    respond_to do |format|
+      format.html {render partial: "new", locals: {comment: @comment} }
+    end
   end
 
   def create
     @article = find_article
     @comment = @article.comments.build(comment_params )
     @comment.user_id = session[:user_id]
-    if @comment.save
-      @question = @comment.get_parent_question
-      redirect_to question_path(@question)
-    else
-      flash[:notice] = "Comment creation error: #{@comment.errors}"
-      render :new
+    respond_to do |format|
+      if @comment.save
+        @question = @comment.get_parent_question
+        format.html { render partial: "show", locals: {comment: @comment} }
+      else
+        format.html {render partial: "new"}
+      end
     end
   end
 
