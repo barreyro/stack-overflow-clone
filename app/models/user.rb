@@ -40,8 +40,8 @@ class User < ActiveRecord::Base
     case self.reputation
     when (100..infinity)  then "Expert"
     when (50..99)         then "On Point"
-    when (0..49)          then "Novice"
-    when (-99..-1)        then "Bum"
+    when (0..49)          then "Dilettante"
+    when (-99..-1)        then "Novice"
     else                       "Dirty Troll"
     end
   end
