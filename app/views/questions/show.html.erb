@@ -1,8 +1,17 @@
 <div class="question_show">
+  <h2><%= @question.title %></h2>
+  <%= @question.body %><br><br>
 
-    <%= @question.title %><br><Br>
-    <%= @question.body %>
+  <div class = "question_edit_buttons">
+    <%= button_to 'Edit Question', {action: "edit", id: @question.id}, method: :get %>
+    <%= button_to 'Delete Question', {action: "destroy", id: @question.id}, method: :delete %>
+   </div>
 
-     <%= button_to 'Edit Question', {action: "edit", id: @question.id}, method: :get %>
-     <%= button_to 'Delete Question', {action: "destroy", id: @question.id}, method: :delete %>
+
+  <div class = "question_answers">
+  <h2> Answers </h2>
+    <% @question.answers.each do |answer| %>
+      <%= answer.body %> <br><br>
+    <% end %>
+  </div>
 </div>
