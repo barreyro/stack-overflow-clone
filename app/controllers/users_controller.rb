@@ -31,8 +31,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @memories = @user.memories
+    @user = User.find_by_id(params[:id])
+    if @user
+      @memories = @user.memories
+    else
+      redirect_to root_path
+    end
   end
 
   def destroy

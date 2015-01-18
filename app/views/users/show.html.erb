@@ -10,5 +10,7 @@
   <%= link_to "#{@memories.title}", question_path(@memories) %>
   Wow, that was amazing. And such a great question, too. You're a real benefit to our community.
   <% end %>
+  <% if session[:user_id].eql? @user.id %>
   <%= button_to 'Delete User', { action: "destroy", id: @user.id }, method: :delete %>
+  <% end %>
 </div>
