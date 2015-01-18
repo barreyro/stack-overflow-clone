@@ -1,0 +1,6 @@
+<div id="welcome-login">
+  <%= form_tag(controller: "sessions", action: "login", method: "get") %>
+  <%= text_field_tag "user_input", nil, :placeholder => "Enter Username or Email" %>
+  <%= password_field_tag "password", nil, :placeholder => "Enter Password" %>
+  <%= submit_tag "Login" %>
+</div>
