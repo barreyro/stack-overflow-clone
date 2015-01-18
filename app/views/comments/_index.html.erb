@@ -1,7 +1,6 @@
-<div class="display-comments">
-  <% @article.comments.each do |comment| %>
-  <div class="panel">
-    <%= render partial: 'comments/show', locals: {comment: comment} %>
-  </div>
-  <% end %>
+<% @article.comments.each do |comment| %>
+<div class="panel">
+  <%= render partial: 'comments/show', locals: {comment: comment} %>
 </div>
+<% end %>
+
