@@ -1,0 +1,92 @@
+#user-profile {
+  width: 80%;
+  margin: 0 auto;
+}
+.profile-header {
+  width: 60%;
+  padding: 10px;
+  margin: 2px auto;
+  text-align: center;
+  border-bottom: .8em double rgb(43,87,151);
+}
+.username-tag {
+  margin: 0;
+  padding: 0;
+  font: 2.5em "Source Sans Pro", sans-serif;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgb(43,87,151);
+}
+.status-tag {
+  margin: 0;
+  padding: 0;
+  font: italic 1em "Source Sans Pro", sans-serif;
+  text-transform: lowercase;
+  color: rgb(176,0,0);
+}
+#reputation {
+  width: 50%;
+  padding: 20px;
+  margin: 50px auto;
+  text-align: center;
+  /* subtlepatterns.com - Swirl by Uday */
+  border-image: url(swirl_pattern.png) 50 50 round;
+  border-width: 25px;
+  box-shadow: 2px -2px 40px rgba(43,87,151,.5);
+}
+#reputation h3 {
+  font: 3em "Source Sans Pro", sans-serif;
+  text-transform: lowercase;
+  color: rgb(43,87,151);
+  margin: 0;
+}
+#reputation p {
+  font: italic 1em "Source Sans Pro", sans-serif;
+  text-transform: lowercase;
+  color: rgb(43,87,151);
+  margin: 0;
+}
+.memories-tag {
+  text-align: center;
+  font: bold 1em "Source Sans Pro", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: rgb(43,87,151);
+}
+.memories-question {
+  margin: 20px;
+  padding: 10px;
+  text-align: center;
+}
+.doing-well {
+  width: 45%;
+  margin: 0 auto;
+  text-align: center;
+}
+.doing-well p {
+  line-height: 120%;
+  color: rgb(43,87,151);
+}
+.deco-quote {
+  font: italic 2em "Source Sans Pro", sans-serif;
+  color: rgb(43,87,151);
+  padding: 10px;
+}
+.delete-user-container {
+  text-align: center;
+}
+.delete-button {
+  width: 100px;
+  height: 50px;
+  background-color: rgb(176,0,0);
+  font: .8em "Source Sans Pro", sans-serif;
+  letter-spacing: .7px;
+  justify-content: center;
+  text-transform: uppercase;
+  color: rgb(239,244,255);
+  border: none;
+  box-shadow: -2px 2px 5px rgba(43,87,151,.7);
+}
+.delete-button:hover {
+  box-shadow: -2px 2px 50px rgb(176,0,0);
+}
