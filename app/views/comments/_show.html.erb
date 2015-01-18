@@ -1,20 +1,26 @@
 <div class="comment-wrapper">
   <% @comment = comment %>
   <% @article = @comment %>
+  <% anchor_id = comment.id %>
   <p> <strong> <%= @comment.user.username %>: </strong> </p>
   <p><%= @comment.body %> </p>
   <p> <span class="datetime"> <%= @comment[:created_at] %> </span> </p>
-
-  <%= form_tag new_comment_comment_path(@article), method: "get" do %>
-    <%= submit_tag("Reply")  %>
-  <% end %>
-
 
   <% if matches_current_user?(@comment.user) %>
     <%= form_for @comment, method: :delete do |f|%>
       <%= f.submit "Delete Comment" %>
     <% end %>
   <% end %>
-</div>
 
-<%= render 'comments/index', locals: {article: @article} %>
+  <%= form_tag new_comment_comment_path(@article),
+  method: "get", :class => "new_comment",
+  :anchor_id => "#{@comment.id}" do %>
+    <%= submit_tag "Reply" %>
+  <% end %>
+
+  <div class="display-comments">
+    <%= render 'comments/index', locals: {article: @article } %>
+    <div id=<%="comment_anchor_#{anchor_id}"%> ></div>
+  </div>
+
+</div>
