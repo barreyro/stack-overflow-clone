@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
   validates_format_of :email, with: /@/
   validates :password, presence: true, length: { within: 6..20 }
 
-  has_many :answers
   has_many :questions
+  has_many :answers, through: :questions
   has_many :votes
   has_many :comments
 
@@ -22,31 +22,41 @@ class User < ActiveRecord::Base
     self.questions.count
   end
 
+  def questions_answer
+    self.answers.count
+  end
+
   def has_questions?
-    true if !self.questions.empty?
+    true unless self.questions.empty?
   end
 
   def reputation
-    self.upvote_count - self.downvote_count
+    self.upvotes.count - self.downvotes.count
   end
 
-  def upvote_count
-    (get_all_upvotes(self.questions) + get_all_upvotes(self.answers)) + (get_all_upvotes(self.answers) + get_all_upvotes(self.answers))
+  def upvotes
+    question_votes = self.votes_on_all_questions.select { |vote| vote.upvote? }
+    answer_votes = self.votes_on_all_answers.select { |vote| vote.downvote? }
+
+    question_votes.concat(answer_votes)
   end
 
-  def downvote_count
-    self.votes.where(upvote: false).count
+  def downvotes
+    question_votes = self.votes_on_all_questions.select { |vote| vote.downvote? }
+    answer_votes = self.votes_on_all_answers.select { |vote| vote.downvote? }
+
+    question_votes.concat(answer_votes)
   end
 
-  def get_all_upvotes data_set
-    data_set.each do |data|
-      data.select { |vote| vote.upvote? }.count
-    end
+  def votes_on_all_questions
+    self.questions.map do |question|
+      question.votes
+    end.flatten
   end
 
-  def get_all_downvotes data_set
-    data_set.each do |data|
-      data.select { |vote| vote.downvote? }.count
-    end
+  def votes_on_all_answers
+    self.answers.map do |answer|
+      answer.votes
+    end.flatten
   end
 end
