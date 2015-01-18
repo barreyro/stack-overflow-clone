@@ -1,22 +1,23 @@
 class CommentsController < ApplicationController
   #parent_article scoped
   def index
-    @article = find_parent
+    @article = locals[:article]
     @comments = @article.comments
     render partial: "index"
   end
 
   def new
-    @article = find_parent
-    @comment = Comment.new
+    @article = find_article
+    @comment = @article.comments.build
   end
 
   def create
-    @article = find_parent
-    @comment = @article.comments.build(params[:comment])
+    @article = find_article
+    @comment = @article.comments.build(comment_params )
+    @comment.user_id = session[:user_id]
     if @comment.save
-      flash[:notice] = "Commented!"
-      redirect_to parent_show_path
+      @question = @comment.get_parent_question
+      redirect_to question_path(@question)
     else
       flash[:notice] = "Comment creation error: #{@comment.errors}"
       render :new
@@ -25,15 +26,21 @@ class CommentsController < ApplicationController
 
   #self-scoped
   def show
-    @article = find_parent
-    @comments = @article.comments
     render partial: "show"
   end
 
   def destroy
+    comment = Comment.find(params[:id])
+    @question = comment.get_parent_question
+    if matches_current_user?(comment.user)
+      comment.body = "[comment deleted by poster]"
+      comment.save
+    end
+    redirect_to question_path(@question)
   end
 
   def edit
+    @comment = Comment.find(params[:id])
   end
 
   def update
@@ -41,18 +48,21 @@ class CommentsController < ApplicationController
 
   private
 
-  def find_parent
-    params.each do |key, value|
-      klass = key.sub( /_id$/, "" )
-      if klass.classify.constantize
-        return klass.classify.constantize.find(value[:id])
-      end
-    end
-    nil
+  def comment_params
+    params.require(:comment).permit(:body)
   end
 
-  def parent_show_path(article_obj)
-    "/#{article_obj.class.downcase}s/#{article_obj.id}"
+  def find_article
+    resource, id = request.path.split("/")[1,2]
+    @article = resource.singularize.classify.constantize.find(id)
+  end
+
+  def remove_id_anchor(key)
+    sanitized = key.clone
+    if sanitized.match(/_id$/)
+      sanitized = key.sub(/_id$/, "")
+    end
+    sanitized
   end
 
 end

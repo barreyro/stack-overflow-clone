@@ -9,7 +9,7 @@ describe CommentsController do
         answer = create(:answer, user: user)
         comment = answer.comments.build( attributes_for(:comment, user_id: user.id) )
         comment.save
-        get :index, {"answer" => {"id" => answer.id} }
+        get :index, locals: {article: answer}
         expect(assigns(:comments)).to match_array [comment]
       end
     end
