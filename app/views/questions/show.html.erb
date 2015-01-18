@@ -24,7 +24,7 @@
     <h4> <%= link_to 'Post an Answer', new_question_answer_path(@article) %> </h4> <br>
 
     <% @question.answers.each do |answer| %>
-      <%= answer.body %> <br>
+      <%= render partial: "answers/show", locals: {answer: answer} %> <br>
     <% end %>
 
   </div>
