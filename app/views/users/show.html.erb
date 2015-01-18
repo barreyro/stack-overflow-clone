@@ -1,16 +1,26 @@
-<div>
-  <h1><%= @user.username %></h1>
-  Your status: <%= @user.user_status %>
-  Your reputation: <%= @user.reputation %>
-  You've asked <%= @user.questions.count %> questions!
-  You've answered <%= @user.answers.count %> questions!
-  <hr>
+<div id="user-profile">
+  <header class="profile-header">
+    <h1 class="username-tag"><%= @user.username %></h1>
+    <span class="status-tag">(<%= @user.user_status %>)</span>
+  </header>
+  <section id="reputation">
+    <h3><%= @user.reputation %></h3>
+    <p>reputation points</p>
+  </section>
   <% if @user.has_questions? %>
-  Remember that time when you asked the question:
-  <%= link_to "#{@memories.title}", question_path(@memories) %>
-  Wow, that was amazing. And such a great question, too. You're a real benefit to our community.
+    <section id="memories">
+      <h3 class="memories-tag">We really loved that time you asked</h3>
+      <div class="memories-question">
+        <span class="deco-quote">&ldquo;</span><%= link_to "#{@memories.title}", question_path(@memories) %><span class="deco-quote">&rdquo;</span>
+      </div>
+      <div class="doing-well">
+        <p>Wow, that was amazing. And such a great question, too. You're a real benefit to our community.</p>
+      </div>
+    </section>
   <% end %>
   <% if session[:user_id].eql? @user.id %>
-  <%= button_to 'Delete User', { action: "destroy", id: @user.id }, method: :delete %>
+  <div class="delete-user-container">
+    <%= button_to 'Delete User', { action: "destroy", id: @user.id, method: :delete }, { class: "delete-button" } %>
+  </div>
   <% end %>
 </div>
