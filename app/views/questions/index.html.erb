@@ -1,7 +1,9 @@
 <div class="question_index">
+
+  <h1> Question Index </h1>
   <ul>
   <% @questions.each do |question| %>
-    <li><%= question.title %></li>
+    <li><a href="/questions/<%= question.id %>"><%= question.title %></a></li>
   <% end %>
   </ul>
 </div>
