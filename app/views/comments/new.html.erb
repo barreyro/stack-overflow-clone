@@ -1,0 +1,11 @@
+<% if @comment.errors %>
+  <% format_errors(@comment).each do |err| %>
+  <p> <%= err %> </p><br>
+  <% end %>
+<% end %>
+
+<%= form_for [@article, @comment]  do |f| %>
+  <%= f.text_area :body %>
+  <br>
+  <%= f.submit %>
+<% end %>
