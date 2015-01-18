@@ -34,6 +34,18 @@ class User < ActiveRecord::Base
     self.questions.sample
   end
 
+  def user_status
+    infinity = (1.0 / 0.0)
+
+    case self.reputation
+    when (100..infinity)  then "Expert"
+    when (50..99)         then "On Point"
+    when (0..49)          then "Novice"
+    when (-99..-1)        then "Bum"
+    else                       "Dirty Troll"
+    end
+  end
+
   def reputation
     self.upvotes.count - self.downvotes.count
   end

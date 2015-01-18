@@ -1,5 +1,6 @@
 <div>
   <h1><%= @user.username %></h1>
+  Your status: <%= @user.user_status %>
   Your reputation: <%= @user.reputation %>
   You've asked <%= @user.questions.count %> questions!
   You've answered <%= @user.answers.count %> questions!
