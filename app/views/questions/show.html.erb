@@ -3,15 +3,21 @@
   <%= @question.body %><br><br>
 
   <div class = "question_edit_buttons">
-    <%= button_to 'Edit Question', {action: "edit", id: @question.id}, method: :get %>
-    <%= button_to 'Delete Question', {action: "destroy", id: @question.id}, method: :delete %>
-   </div>
+    <% if session[:user_id] == @question.user_id %>
+      <%= button_to 'Edit Question', {action: "edit", id: @question.id}, method: :get %>
+      <%= button_to 'Delete Question', {action: "destroy", id: @question.id}, method: :delete %>
+    <% end %>
+  </div>
+
 
 
   <div class = "question_answers">
   <h2> Answers </h2>
+    <h4> <%= link_to 'Post an Answer', new_question_answer_path(@article) %> </h4> <br>
+
     <% @question.answers.each do |answer| %>
-      <%= answer.body %> <br><br>
+      <%= answer.body %> <br>
     <% end %>
+
   </div>
 </div>
