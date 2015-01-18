@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :comments
 
   def self.session_user session_id
-    User.find(session_id)
+    User.find_by_id(session_id)
   end
 
   def current_user?
@@ -27,7 +27,23 @@ class User < ActiveRecord::Base
   end
 
   def has_questions?
-    true unless self.questions.empty?
+    !self.questions.empty?
+  end
+
+  def memories
+    self.questions.sample
+  end
+
+  def user_status
+    infinity = (1.0 / 0.0)
+
+    case self.reputation
+    when (100..infinity)  then "Expert"
+    when (50..99)         then "On Point"
+    when (0..49)          then "Dilettante"
+    when (-99..-1)        then "Novice"
+    else                       "Dirty Troll"
+    end
   end
 
   def reputation

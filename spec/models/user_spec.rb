@@ -129,5 +129,8 @@ describe User do
         expect(@user.downvotes.count).to eq @rand_num
       end
     end
+
+    describe "#user_status" do
+    end
   end
 end
