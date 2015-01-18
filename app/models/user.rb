@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   end
 
   def has_questions?
-    true unless self.questions.empty?
+    !self.questions.empty?
   end
 
   def reputation
