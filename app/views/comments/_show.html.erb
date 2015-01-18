@@ -1,5 +1,5 @@
 <div class="comment-wrapper">
-  <% @comment = locals[:comment] %>
+  <% @comment = comment %>
   <% @article = @comment %>
   <p> <strong> <%= @comment.user.username %>: </strong> </p>
   <p><%= @comment.body %> </p>
