@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require jquery-ui
  */
 a { text-decoration: none; }
 p { margin: 2px; font: 1em "Source Sans Pro", sans-serif; letter-spacing: .7px; }
