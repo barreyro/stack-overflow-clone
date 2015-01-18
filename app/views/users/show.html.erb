@@ -1,0 +1,12 @@
+<div>
+  <h1><%= @user.username %></h1>
+  Your reputation: <%= @user.reputation %>
+  You've asked <%= @user.questions.count %> questions!
+  You've answered <%= @user.answers.count %> questions!
+  <hr>
+  <% if @user.has_questions? %>
+  Remember that time when you asked the question:
+  <%= link_to "#{@memories.title}", question_path(@memories) %>
+  Wow, that was amazing. And such a great question, too. You're a real benefit to our community.
+  <% end %>
+</div>
