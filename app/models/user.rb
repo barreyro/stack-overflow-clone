@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :comments
 
   def self.session_user session_id
-    User.find(session_id)
+    User.find_by_id(session_id)
   end
 
   def current_user?
