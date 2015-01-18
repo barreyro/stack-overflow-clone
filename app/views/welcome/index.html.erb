@@ -1,1 +1,6 @@
-<%= render partial: "/layouts/splashplanation", locals: { user: @user } %>
+<div id="landing-title-container">
+  <h1 id="splash-title">DBC Overflow</h1>
+</div>
+<% if !session[:user_id] %>
+  <%= render partial: "layouts/login" %>
+<% end %>

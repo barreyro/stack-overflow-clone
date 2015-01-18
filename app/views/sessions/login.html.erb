@@ -1,6 +1,6 @@
-<%= form_tag(controller: "sessions", action: "login", method: "get") %>
-<%= label_tag "user_input", "Username or Email:", class: "login-username-tag" %>
-<%= text_field_tag "user_input" %>
-<%= label_tag "password", "Password:", class: "login-password-tag" %>
-<%= password_field_tag "password" %>
-<%= submit_tag "Login" %>
+<div id="welcome-login">
+  <%= form_tag(controller: "sessions", action: "login", method: "get") %>
+  <%= text_field_tag "user_input", nil, :placeholder => "Enter Username or Email" %>
+  <%= password_field_tag "password", nil, :placeholder => "Enter Password" %>
+  <%= submit_tag "Login" %>
+</div>
