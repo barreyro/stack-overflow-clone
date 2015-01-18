@@ -31,12 +31,12 @@ class CommentsController < ApplicationController
 
   def destroy
     comment = Comment.find(params[:id])
+    @question = comment.get_parent_question
     if matches_current_user?(comment.user)
-      @article = comment.get_parent_qa
       comment.body = "[comment deleted by poster]"
       comment.save
     end
-    redirect_to parent_show_path(@article)
+    redirect_to question_path(@question)
   end
 
   def edit
