@@ -30,6 +30,10 @@ class User < ActiveRecord::Base
     !self.questions.empty?
   end
 
+  def memories
+    self.questions.sample
+  end
+
   def reputation
     self.upvotes.count - self.downvotes.count
   end
