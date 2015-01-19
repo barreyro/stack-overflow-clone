@@ -2,11 +2,21 @@
   <%= render partial: "users/header", locals: { user: @user } %>
   <%= render partial: "users/memories", locals: { user: @user, memories: @memories } %>
   <section id="top-questions">
-    <h3 class="top-tag">Top Questions</h3>
+    <h3 class="top-tag">Questions</h3>
     <div id="questions-roll">
+      <ul class="questions-list">
+      <% @questions.each do |question| %>
+        <li class="profile-question-title"><%= question.title %></li>
+        <li class="profile-question-body"><%= question.body %></li>
+
+          <li class="profile-edit-question"><%= link_to "Edit", edit_question_path(question.id) %></li>
+
+      <% end %>
+      </ul>
+      <%= will_paginate @questions, previous_label: "<", next_label: ">" %>
     </div>
   </section>
-  <% if session[:user_id].eql? @user.id %>
+  <% if @user.current_user?(session[:user_id]) %>
   <div class="delete-user-container">
     <%= button_to 'Delete User', { action: "destroy", id: @user.id, method: :delete }, { class: "delete-button" } %>
   </div>
