@@ -8,9 +8,9 @@
       <% @questions.each do |question| %>
         <li class="profile-question-title"><%= question.title %></li>
         <li class="profile-question-body"><%= question.body %></li>
-
+        <% if @user.current_user?(session[:user_id]) %>
           <li class="profile-edit-question"><%= link_to "Edit", edit_question_path(question.id) %></li>
-
+        <% end %>
       <% end %>
       </ul>
       <%= will_paginate @questions, previous_label: "<", next_label: ">" %>
