@@ -34,6 +34,7 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
     if @user
       @memories = @user.memories
+      @questions = Question.where(user_id: @user.id).page(params[:page]).per_page(1)
     else
       redirect_to root_path
     end

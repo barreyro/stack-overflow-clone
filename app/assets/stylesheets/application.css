@@ -86,6 +86,9 @@ p { margin: 2px; font: 1em "Source Sans Pro", sans-serif; letter-spacing: .7px; 
   text-align: center;
   height: 40px;
 }
+#welcome-login {
+  border-bottom: 5px double rgb(43,87,151);
+}
 
 li {
   list-style-type: none;
