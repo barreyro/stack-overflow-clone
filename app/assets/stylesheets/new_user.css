@@ -1,0 +1,18 @@
+.new_user {
+  width: 200px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+
+  font: 1em "Source Sans Pro", sans-serif;
+  letter-spacing: 2px;
+}
+.new_user input {
+  margin: 2px;
+  border: 4px double rgb(239,244,255);
+  background-color: rgb(43,87,151);
+  color: rgb(239,244,255);
+  text-align: center;
+  height: 40px;
+}
