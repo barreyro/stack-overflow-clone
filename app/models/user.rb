@@ -14,8 +14,8 @@ class User < ActiveRecord::Base
     User.find_by_id(session_id)
   end
 
-  def current_user?
-    self.id.eql? User.session_user.id
+  def current_user? session_id
+    self.id.eql? User.session_user session_id
   end
 
   def questions_asked

@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require jquery-ui
  */
 a { text-decoration: none; }
 p { margin: 2px; font: 1em "Source Sans Pro", sans-serif; letter-spacing: .7px; }
@@ -46,10 +47,10 @@ p { margin: 2px; font: 1em "Source Sans Pro", sans-serif; letter-spacing: .7px; 
   padding: 15px;
   font: 600 3em "Source Sans Pro", sans-serif;
   letter-spacing: 3px;
-  color: rgb(239,244,255);
+  color: rgb(43,87,151);
   text-transform: uppercase;
   text-align: center;
-  border-bottom: 5px double rgb(239,244,255);
+  border-bottom: 5px double rgb(43,87,151);
 }
 #main-content {
   margin: 1% 4% ;
@@ -69,16 +70,23 @@ p { margin: 2px; font: 1em "Source Sans Pro", sans-serif; letter-spacing: .7px; 
   letter-spacing: 1px;
   font: 1em "Source Sans Pro", sans-serif;
 }
-#splashlog form {
+#welcome-login form {
   display: flex;
   flex-direction: column;
   width: 200px;
   margin: 20px auto;
+  font: 1em "Source Sans Pro", sans-serif;
+  letter-spacing: 2px;
 }
-#splashlog input[type="text"], input[type="password"] {
-  padding: 5px;
-  border: 2px double solid;
+#welcome-login input {
+  margin: 2px;
+  border: 4px double rgb(239,244,255);
+  background-color: rgb(43,87,151);
+  color: rgb(239,244,255);
+  text-align: center;
+  height: 40px;
 }
+
 li {
   list-style-type: none;
   margin-left: -1.5rem;

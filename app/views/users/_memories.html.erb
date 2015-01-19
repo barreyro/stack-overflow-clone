@@ -1,0 +1,19 @@
+<% if user.has_questions? %>
+  <section id="memories">
+    <% if user.id.eql? session[:user_id] %>
+      <h3 class="memories-tag">We really loved that time you asked</h3>
+    <% else %>
+      <h3 class="memories-tag"><%= user.username %> asks great questions like:</h3>
+    <% end %>
+    <div class="memories-question">
+      <span class="deco-quote">&ldquo;</span><%= link_to "#{memories.title}", question_path(memories) %><span class="deco-quote">&rdquo;</span>
+    </div>
+    <div class="doing-well">
+      <% if user.id.eql? session[:user_id] %>
+        <p>Wow, that was amazing. And such a great question, too. You're a real benefit to our community.</p>
+      <% else %>
+        <p>Isn't <%= user.username %> just peachy?</p>
+      <% end %>
+    </div>
+  </section>
+<% end %>
