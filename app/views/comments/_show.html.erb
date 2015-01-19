@@ -13,7 +13,7 @@
   <% end %>
 
   <%= form_tag new_comment_comment_path(@article),
-  method: "get", :class => "new_comment",
+  method: "get", :class => "reply_comment",
   :anchor_id => "#{@comment.id}" do %>
     <%= submit_tag "Reply" %>
   <% end %>
