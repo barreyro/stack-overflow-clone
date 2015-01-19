@@ -4,3 +4,12 @@
 <% if !session[:user_id] %>
   <%= render partial: "layouts/login" %>
 <% end %>
+<div id="homepage-question-container">
+  <ul>
+  <% @questions.each do |question| %>
+    <li class="question-title"><%= link_to "#{question.title}", question_path(question) %> <%= question.created_at.to_date %></li>
+    <li class="question-body"><%= question.body %></li>
+  <% end %>
+  <ul>
+  <%= will_paginate @questions, previous_label: "<", next_label: ">" %>
+</div>

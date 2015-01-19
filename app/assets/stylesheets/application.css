@@ -109,3 +109,22 @@ li {
 .user-link {
   color: rgb(43,87,151);
 }
+#homepage-question-container {
+  width: 80%;
+  margin: 0 auto;
+}
+#homepage-question-container li {
+  padding: 2px;
+}
+.question-title a {
+  font: bold 1em "Source Sans Pro", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: rgb(43,87,151);
+}
+.question-body {
+  width: 95%;
+  margin: 0 auto;
+  letter-spacing: .75px;
+  line-height: 150%;
+}
