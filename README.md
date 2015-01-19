@@ -1,5 +1,10 @@
 ###weare:
 
+** bold
+not bold
+*ital
+**bold** not bold
+
 #Stephanie Barreyro, Nick Mascia, Daniel Chan, and Luke Thomas
 
 Primarily, we are git surgeons.
