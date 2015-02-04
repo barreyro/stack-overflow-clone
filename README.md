@@ -1,15 +1,6 @@
-###weare:
-
-** bold
-not bold
-*ital
-**bold** not bold
-
 #Stephanie Barreyro, Nick Mascia, Daniel Chan, and Luke Thomas
 
-Primarily, we are git surgeons.
-
-This is our stack overflow clone.
+Stack overflow clone.
 
 
 #MVP User Stories Are As Follow:
