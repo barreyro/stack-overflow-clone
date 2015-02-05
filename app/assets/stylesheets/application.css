@@ -99,12 +99,8 @@ li {
   border: 1px solid #DDDDDD;
   background-color: rgba(43,87,151, 0.1);
   border-color: rgba(43,87,151, 0.2);
-  width: 70%;
-  margin: auto;
-}
-.panel .panel {
-  width: 95%;
-  margin-left: 5%;
+  width: inherit;
+  margin: 10px;
 }
 .user-link {
   color: rgb(43,87,151);
