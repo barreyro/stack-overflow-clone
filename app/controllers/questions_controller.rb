@@ -35,6 +35,7 @@ class QuestionsController  < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @article = @question
   end
 
   def destroy

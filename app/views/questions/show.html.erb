@@ -11,7 +11,6 @@
       </div>
     <% end %>
     <div class="question_comments">
-      <% @article = @question %>
       <%= link_to 'Reply', new_question_comment_path(@article) %>
       <%= render 'comments/index', locals: {article: @article} %>
     <div>
