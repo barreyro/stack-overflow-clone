@@ -4,12 +4,12 @@
     <div class="question-body">
       <p class="question-text"><%= @question.body %><p>
     </div>
-    <div class = "question_edit_buttons">
-      <% if session[:user_id] == @question.user_id %>
-        <%= button_to 'Edit Question', {action: "edit", id: @question.id}, method: :get %>
-        <%= button_to 'Delete Question', {action: "destroy", id: @question.id}, method: :delete %>
-      <% end %>
-    </div>
+    <% if session[:user_id] == @question.user_id %>
+      <div class = "question_edit_buttons">
+          <%= button_to 'Edit Question', {action: "edit", id: @question.id}, method: :get %>
+          <%= button_to 'Delete Question', {action: "destroy", id: @question.id}, method: :delete %>
+      </div>
+    <% end %>
   </section>
 
 
