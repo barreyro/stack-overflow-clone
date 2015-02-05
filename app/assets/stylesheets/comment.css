@@ -5,3 +5,10 @@
 .datetime {
   font-size: 0.7em;
 }
+.reply_comment input {
+  font: .8em "Source Sans Pro", sans-serif;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+  color: rgb(43,87,151);
+  margin: 10px;
+}

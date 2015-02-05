@@ -1,31 +1,25 @@
 <div class="question_show">
-  <h2><%= @question.title %></h2>
-  <%= @question.body %><br><br>
-
-  <div class = "question_edit_buttons">
+  <section class="main-question">
+    <h2 class="question-title-tag"><%= @question.title %></h2>
+    <div class="question-body">
+      <p class="question-text"><%= @question.body %><p>
+    </div>
     <% if session[:user_id] == @question.user_id %>
-      <%= button_to 'Edit Question', {action: "edit", id: @question.id}, method: :get %>
-      <%= button_to 'Delete Question', {action: "destroy", id: @question.id}, method: :delete %>
+      <div class = "question_edit_buttons">
+          <%= button_to 'Edit Question', {action: "edit", id: @question.id}, method: :get %>
+          <%= button_to 'Delete Question', {action: "destroy", id: @question.id}, method: :delete %>
+      </div>
     <% end %>
-  </div>
-
-  <div class="question_comments">
-    <% @article = @question %>
-
-    <h4> <%= link_to 'Reply', new_question_comment_path(@article) %></h4>
-
-    <h4><%= link_to 'View Comments', question_comments_path(@article)%></h4>
-    <%= render 'comments/index', locals: {article: @article} %>
-    <br>
-  <div>
-
-  <div class = "question_answers">
-  <h2> Answers </h2>
-    <h4> <%= link_to 'Post an Answer', new_question_answer_path(@article) %> </h4> <br>
-
+    <div class="question_comments">
+      <%= link_to 'Reply', new_question_comment_path(@article) %>
+      <%= render 'comments/index', locals: {article: @article} %>
+    <div>
+  </section>
+  <section class = "question_answers">
+    <h2 class="question-answers-tag">Answers</h2>
+    <%= link_to 'Post an Answer', new_question_answer_path(@article) %>
     <% @question.answers.each do |answer| %>
-      <%= render partial: "answers/show", locals: {answer: answer} %> <br>
+      <%= render partial: "answers/show", locals: {answer: answer} %>
     <% end %>
-
-  </div>
+  </section>
 </div>

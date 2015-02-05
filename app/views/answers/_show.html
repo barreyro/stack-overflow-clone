@@ -1,5 +1,5 @@
 <div class="panel">
-<% @answer = answer unless @answer%>
+  <% @answer = answer unless @answer%>
   <ul>
     <li>
       <strong>
@@ -7,15 +7,13 @@
         <a class="user-link" href="/users/<%= @answer.user.id %>">
           <%= @answer.user.username %>
         </a>
-        on <%= @answer.created_at.strftime("%b %d, %Y") %>):
+        on <%= @answer.created_at.strftime("%b %d, %Y") %>:
       </strong>
     </li>
     <li>
       <%= @answer.body %>
     </li>
   </ul>
-
   <% @article = @answer %>
   <%= render 'comments/index', locals: {article: @article} %>
-
 </div>

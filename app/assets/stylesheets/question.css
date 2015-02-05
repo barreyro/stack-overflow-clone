@@ -1,0 +1,33 @@
+.main-question, .question_answers {
+  width: 97%;
+  margin: 0 auto;
+}
+.question-title-tag, .question-answers-tag {
+  margin-top: 3%;
+  padding: 5px 5px;
+  font: 1.75em "Source Sans Pro", sans-serif;
+  letter-spacing: .5px;
+  color: rgb(43,87,151);
+  background-color: rgb(239,244,255);
+  box-shadow: -2px 2px 5px rgba(0,0,0,.2);
+}
+.question-body {
+  padding-top: -10px;
+  padding-bottom: 10px;
+}
+.question-text {
+  margin: 0;
+  font: 1em "Source Sans Pro", sans-serif;
+  letter-spacing: .5px;
+}
+.question_comments a, .question_answers a {
+  font: italic .9em "Source Sans Pro", sans-serif;
+  color: rgb(43,87,151);
+}
+.question_edit_buttons {
+  width: 50%;
+  margin: 0 auto;
+}
+.question_edit_buttons form {
+  display: inline-block;
+}
