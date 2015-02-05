@@ -1,8 +1,8 @@
-.main-question {
+.main-question, .question_answers {
   width: 97%;
   margin: 0 auto;
 }
-.question-title-tag {
+.question-title-tag, .question-answers-tag {
   margin-top: 3%;
   padding: 5px 5px;
   font: 1.75em "Source Sans Pro", sans-serif;
@@ -20,7 +20,14 @@
   font: 1em "Source Sans Pro", sans-serif;
   letter-spacing: .5px;
 }
-.question_comments a {
+.question_comments a, .question_answers a {
   font: italic .9em "Source Sans Pro", sans-serif;
   color: rgb(43,87,151);
+}
+.question_edit_buttons {
+  width: 50%;
+  margin: 0 auto;
+}
+.question_edit_buttons form {
+  display: inline-block;
 }

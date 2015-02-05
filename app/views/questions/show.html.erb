@@ -15,15 +15,11 @@
       <%= render 'comments/index', locals: {article: @article} %>
     <div>
   </section>
-
-
-  <div class = "question_answers">
-  <h2> Answers </h2>
-    <h4> <%= link_to 'Post an Answer', new_question_answer_path(@article) %> </h4> <br>
-
+  <section class = "question_answers">
+    <h2 class="question-answers-tag">Answers</h2>
+    <%= link_to 'Post an Answer', new_question_answer_path(@article) %>
     <% @question.answers.each do |answer| %>
-      <%= render partial: "answers/show", locals: {answer: answer} %> <br>
+      <%= render partial: "answers/show", locals: {answer: answer} %>
     <% end %>
-
-  </div>
+  </section>
 </div>
