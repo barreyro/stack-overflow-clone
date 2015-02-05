@@ -10,18 +10,13 @@
           <%= button_to 'Delete Question', {action: "destroy", id: @question.id}, method: :delete %>
       </div>
     <% end %>
+    <div class="question_comments">
+      <% @article = @question %>
+      <%= link_to 'Reply', new_question_comment_path(@article) %>
+      <%= render 'comments/index', locals: {article: @article} %>
+    <div>
   </section>
 
-
-  <div class="question_comments">
-    <% @article = @question %>
-
-    <h4> <%= link_to 'Reply', new_question_comment_path(@article) %></h4>
-
-    <h4><%= link_to 'View Comments', question_comments_path(@article)%></h4>
-    <%= render 'comments/index', locals: {article: @article} %>
-    <br>
-  <div>
 
   <div class = "question_answers">
   <h2> Answers </h2>
